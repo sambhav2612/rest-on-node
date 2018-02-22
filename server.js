@@ -64,7 +64,7 @@ router.route('/products/:product_id').get(function (req, res) {
 router.route('/products/:product_id').put(function (req, res) {
     product.findById(req.params.product_id, function (err, prod) {
         if (err) {
-            req.send(err);
+            res.send(err);
         }
 
         // store the found object in instance called p
@@ -81,15 +81,21 @@ router.route('/products/:product_id').put(function (req, res) {
             if (err) {
                 res.send(err);
             }
-            res.send({ message: title + ' Updated!' });
+            res.send({ message: title + ' updated!' });
         });
 
     });
 });
 
-//delete
-router.route('/products').delete(function (req, res) {
+//delete (by ID)
+router.route('/products/:product_id').delete(function (req, res) {
+    product.remove({ _id: req.param.product_id }, function (err, prod) {
+        if (err) {
+            res.send(err);
+        }
 
+        res.json({ message: req.param.title + ' successfully deleted!' });
+    });
 });
 
 app.use(cors());
