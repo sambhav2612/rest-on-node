@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm --version",
     "run": "node server.js",
-    "serve": "nodemon ./server.js localhost 8888"
+    "serve": "nodemon ./server.js localhost 8888",
+    "start": "node server.js"
   },
   "author": "“Sambhav <“sambhavjain2612@gmail.com”> (“sambhav2612.github.io”)",
   "license": "MIT",
@@ -16,5 +17,18 @@
     "express": "^4.16.2",
     "mongoose": "^5.0.6",
     "nodemon": "^1.15.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sambhav2612/rest-on-node.git"
+  },
+  "keywords": [
+    "mean-stack",
+    "rest-api"
+  ],
+  "bugs": {
+    "url": "https://github.com/sambhav2612/rest-on-node/issues"
+  },
+  "homepage": "https://github.com/sambhav2612/rest-on-node#readme"
 }
