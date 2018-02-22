@@ -34,13 +34,13 @@ router.route('/products').post(function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.send({ message: p.title +  ' Generated!' });
+        res.send({ message: p.title + ' Generated!' });
     });
 });
 
 //read
 router.route('/products').get(function (req, res) {
-    product.find(function (err, products){
+    product.find(function (err, products) {
         if (err) {
             res.send(err);
         }
@@ -51,7 +51,7 @@ router.route('/products').get(function (req, res) {
 
 //read by ID
 router.route('/products/:product_id').get(function (req, res) {
-    product.findById(req.params.product_id, function (err, prod){
+    product.findById(req.params.product_id, function (err, prod) {
         if (err) {
             res.send(err);
         }
@@ -60,9 +60,31 @@ router.route('/products/:product_id').get(function (req, res) {
     });
 });
 
-//update
-router.route('/products').put(function (req, res) {
+//update (by ID)
+router.route('/products/:product_id').put(function (req, res) {
+    product.findById(req.params.product_id, function (err, prod) {
+        if (err) {
+            req.send(err);
+        }
 
+        // store the found object in instance called p
+        var p = res;
+
+        var title = p.title;
+
+        prod.title = req.body.title;
+        prod.price = req.body.price;
+        prod.instock = req.body.instock;
+        prod.image = req.body.image;
+
+        prod.save(function (err) {
+            if (err) {
+                res.send(err);
+            }
+            res.send({ message: title + ' Updated!' });
+        });
+
+    });
 });
 
 //delete
