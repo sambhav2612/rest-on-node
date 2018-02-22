@@ -34,13 +34,30 @@ router.route('/products').post(function (req, res) {
         if (err) {
             res.send(err);
         }
-        res.send({ message: 'Product Generated!' });
+        res.send({ message: p.title +  ' Generated!' });
     });
 });
 
 //read
 router.route('/products').get(function (req, res) {
+    product.find(function (err, products){
+        if (err) {
+            res.send(err);
+        }
 
+        res.send(products);
+    });
+});
+
+//read by ID
+router.route('/products/:product_id').get(function (req, res) {
+    product.findById(req.params.product_id, function (err, prod){
+        if (err) {
+            res.send(err);
+        }
+
+        res.json(prod);
+    });
 });
 
 //update
