@@ -5,7 +5,6 @@ var cors = require('cors');
 var app = express();
 
 var mongoose = require('mongoose');
-
 var product = require('./product');
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,9 +13,12 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8888;
 var router = express.Router();
 
-mongoose.connect('mongodb://localhost:27017/products');
+mongoose.connect('mongodb://localhost:27017/products')
+    .then(() => { console.log('Successfully connected to Mongo!') })
+    .catch(() => { console.log('Successfully connected to Mongo!') });
 
 router.use(function (req, res, next) {
+    // auth and log
     console.log('');
     next();
 });
@@ -28,13 +30,14 @@ router.route('/products').post(function (req, res) {
     p.title = req.body.title;
     p.price = req.body.price;
     p.instock = req.body.instock;
+    p.quantity = req.body.quantity;
     p.image = req.body.image;
 
     p.save(function (err) {
         if (err) {
             res.send(err);
         }
-        res.send({ message: p.title + ' Generated!' });
+        res.send({ message: req.body.title + ' generated!' });
     });
 });
 
@@ -75,6 +78,7 @@ router.route('/products/:product_id').put(function (req, res) {
         prod.title = req.body.title;
         prod.price = req.body.price;
         prod.instock = req.body.instock;
+        prod.quantity = req.body.quantity;
         prod.image = req.body.image;
 
         prod.save(function (err) {

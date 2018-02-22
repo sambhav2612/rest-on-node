@@ -4,6 +4,7 @@ var productSchema = new schema({
     title: String,
     price: Number,
     instock: Boolean,
+    quantity: Number,
     image: String
 });
 
