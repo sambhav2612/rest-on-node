@@ -1,6 +1,6 @@
 {
   "name": "rest-on-node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "restful api in node",
   "main": "server.js",
   "scripts": {
@@ -17,9 +17,6 @@
     "express": "^4.16.2",
     "mongoose": "^5.0.6",
     "nodemon": "^1.15.1"
-  },
-  "devDependencies": {
-    "@angular/cli": "^1.7.1"
   },
   "repository": {
     "type": "git",
