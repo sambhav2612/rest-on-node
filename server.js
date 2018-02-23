@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8888;
 var router = express.Router();
 
-mongoose.connect('mongodb://localhost:27017/products')
+mongoose.connect(process.env.MONGO_SERVE)
     .then(() => { console.log('Successfully connected to Mongo!') })
     .catch(() => { console.log('Successfully connected to Mongo!') });
 
@@ -93,12 +93,12 @@ router.route('/products/:product_id').put(function (req, res) {
 
 //delete (by ID)
 router.route('/products/:product_id').delete(function (req, res) {
-    product.remove({ _id: req.param.product_id }, function (err, prod) {
+    product.remove({ _id: req.params.product_id }, function (err, prod) {
         if (err) {
             res.send(err);
         }
 
-        res.json({ message: req.param.title + ' successfully deleted!' });
+        res.json({ message: req.params.title + ' successfully deleted!' });
     });
 });
 
