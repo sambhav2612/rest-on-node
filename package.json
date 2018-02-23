@@ -26,6 +26,9 @@
     "mean-stack",
     "rest-api"
   ],
+  "engines": {
+    "node": "9.1.0"
+  },
   "bugs": {
     "url": "https://github.com/sambhav2612/rest-on-node/issues"
   },
