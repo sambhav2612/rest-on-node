@@ -23,6 +23,12 @@ router.use(function (req, res, next) {
     next();
 });
 
+// testing route
+router.route('/test').get(function (req, res) {
+    console.log('testing route working!');
+    res.send('testing route working!');
+});
+
 //create
 router.route('/products').post(function (req, res) {
     // create a new instance of product model
