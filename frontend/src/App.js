@@ -11,9 +11,9 @@ class App extends Component {
           <h1 className="App-title">rest-on-node</h1>
         </header>
         <p className="App-intro">
-          <button>POST</button>
-          <button>GET</button>
-          <button>PUT</button>
+          <button>POST </button>
+          <button>GET </button>
+          <button>PUT </button>
           <button>DELETE</button>
         </p>
       </div>
