@@ -6,8 +6,10 @@
   "scripts": {
     "test": "npm --version",
     "run": "node server.js",
-    "serve": "nodemon ./server.js localhost 8888",
-    "start": "node server.js"
+    "server": "nodemon ./server.js localhost 8888",
+    "start": "node server.js",
+    "client": "cd frontend && npm start",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
   },
   "author": "“Sambhav <“sambhavjain2612@gmail.com”> (“sambhav2612.github.io”)",
   "license": "MIT",
@@ -17,6 +19,9 @@
     "express": "^4.16.2",
     "mongoose": "^5.0.6",
     "nodemon": "^1.15.1"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: []
+    }
+  }
+
+  componentDidMount() {
+    axios.get('/api/products')
+      .then(res => this.setState({ response: res.express }))
+      .catch(err => console.log(err));
+
+    console.log(this.state.products);
+  }
+
   render() {
     return (
       <div className="App">
@@ -10,65 +28,34 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">rest-on-node</h1>
         </header>
+
         <p className="App-intro">
-          <button>POST </button>
+          PRODUCT CATALOG
+          <button><Link to="/create">POST </Link></button>
           <button>GET </button>
           <button>PUT </button>
           <button>DELETE</button>
         </p>
+        <table class="table table-stripe">
+          <thead>
+            <tr>
+              <th>ISBN</th>
+              <th>Title</th>
+              <th>Author</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.books.map(book =>
+              <tr>
+                <td><Link to={`/show/${book._id}`}>{book.isbn}</Link></td>
+                <td>{book.title}</td>
+                <td>{book.author}</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     );
-  }
-}
-
-class Products extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleproductTitle = this.handleproductTitle.bind(this);
-    this.handleproductPrice = this.handleproductPrice.bind(this);
-    this.handleproductInStock = this.handleproductInStock.bind(this);
-    this.handleproductQuantity = this.handleproductQuantity.bind(this);
-    this.handleproductImage = this.handleproductImage.bind(this);
-
-    this.state = {
-      productTitle: "",
-      productPrice: 0,
-      productInStock: true,
-      productQuantity: 0,
-      productImage: null
-    };
-/*
-    handleproductTitle(event) {
-      this.setState({ productTitle: event.target.value });
-    };
-
-    handleproductPrice(event) {
-      this.setState({ productPrice: event.target.value });
-    };
-
-    handleproductInStock(event) {
-      this.setState({ productInStock: event.target.value });
-    };
-
-    handleproductQuantity(event) {
-      this.setState({ productQuantity: event.target.value });
-    };
-
-    handleproductImage(event) {
-      this.setState({ productImage: event.target.value });
-    };
-*/
-  }
-  render() {
-    return (
-      <p className="App-intro">
-          <button>POST</button>
-          <button>GET</button>
-          <button>PUT</button>
-          <button>DELETE</button>
-        </p>
-    )
   }
 }
 

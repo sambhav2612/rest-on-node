@@ -71,7 +71,7 @@ router.route('/products/:product_id').get(function (req, res) {
 
 //update (by ID)
 router.route('/products/:product_id').put(function (req, res) {
-    product.findById(req.params.product_id, function (err, prod) {
+    product.findByIdAndUpdate(req.params.product_id, function (err, prod) {
         if (err) {
             res.send(err);
         }
