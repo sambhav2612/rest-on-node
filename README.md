@@ -1,7 +1,7 @@
-# rest-on-node [![Build Status](https://travis-ci.org/sambhav2612/rest-on-node.svg?branch=master)](https://travis-ci.org/sambhav2612/rest-on-node) [ ![Codeship Status for sambhav2612/rest-on-node](https://app.codeship.com/projects/afa16980-fa37-0135-4630-76c7a57fbdb4/status?branch=master)](https://app.codeship.com/projects/278756)
+# rest-on-node
 
 ## Latest update
-Enpoints working on the production database (hosted at mLab).
+Enpoints **not** working on the local database.
 
 ### Upcoming changes
 - 0.0.2 -> 0.0.3: Addition of bash script to build both, backend and frontend. 

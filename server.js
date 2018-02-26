@@ -17,21 +17,22 @@ mongoose.connect(process.env.MONGO_SERVE)
     .then(() => { console.log('Successfully connected to Mongo!') })
     .catch(() => { console.log('Successfully connected to Mongo!') });
 
-router.use(function (req, res, next) {
-    // auth and log
-    console.log('');
-    next();
-});
-
 // testing route
 router.route('/test').get(function (req, res) {
     console.log('testing route working!');
     res.send('testing route working!');
 });
 
+router.route('/').get(function (req, res) {
+    res.json({ message: "listening on /api/" });
+});
+
 //create
 router.route('/products').post(function (req, res) {
     // create a new instance of product model
+
+    console.log('starting to post at /api/products');
+
     var p = new product();
     p.title = req.body.title;
     p.price = req.body.price;
@@ -39,7 +40,7 @@ router.route('/products').post(function (req, res) {
     p.quantity = req.body.quantity;
     p.image = req.body.image;
 
-    p.save(function (err) {
+    p.savee(function (err) {
         if (err) {
             res.send(err);
         }
