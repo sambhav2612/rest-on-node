@@ -1,7 +1,7 @@
 # rest-on-node
 
 ## Latest update
-Enpoints **not** working on the local database.
+End points **not** working on the local database.
 
 ### Upcoming changes
 - 0.0.2 -> 0.0.3: Addition of bash script to build both, backend and frontend. 
