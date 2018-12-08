@@ -9,7 +9,9 @@
     "server": "nodemon ./server.js localhost 8888",
     "start": "node server.js",
     "client": "cd frontend && npm start",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "“Sambhav <“sambhavjain2612@gmail.com”> (“sambhav2612.github.io”)",
   "license": "MIT",
@@ -18,7 +20,8 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "mongoose": "^5.0.6",
-    "nodemon": "^1.15.1"
+    "nodemon": "^1.15.1",
+    "snyk": "^1.116.2"
   },
   "devDependencies": {
     "concurrently": "^3.5.1"
@@ -37,5 +40,6 @@
   "bugs": {
     "url": "https://github.com/sambhav2612/rest-on-node/issues"
   },
-  "homepage": "https://github.com/sambhav2612/rest-on-node#readme"
+  "homepage": "https://github.com/sambhav2612/rest-on-node#readme",
+  "snyk": true
 }
