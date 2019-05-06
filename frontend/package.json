@@ -7,13 +7,17 @@
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
     "react-router-dom": "^4.2.2",
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "snyk": "^1.161.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
-  "proxy": "http://localhost:8888/"
+  "proxy": "http://localhost:8888/",
+  "snyk": true
 }
